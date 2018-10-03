@@ -35,6 +35,13 @@ class FirstappsController < ApplicationController
 
 	end
 
+	def destroy
+		@firstapp = Firstapp.find(params[:id])
+		@firstapp.destroy
+		flash[:notice] = "Data was deleted successfully"
+		redirect_to firstapps_path
+	end
+
 	private
 		def firstapp_params
 			params.require(:firstapp).permit(:name, :department, :company)
