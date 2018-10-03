@@ -1,0 +1,27 @@
+<h1>New page</h1>
+<% if @firstapp.errors.any? %>
+<h2> The following errors prevented the database to store </h2>
+<ul>
+	<% @firstapp.errors.full_messages.each do |dis| %>
+	<li><%= dis %></li>
+	<% end %>
+</ul>
+<% end %>
+<%= form_for @firstapp do |f| %>
+<p>
+	<%= f.label :Name %><br>
+	<%= f.text_field :name %>
+</p>
+<p>
+	<%= f.label :Department %><br>
+	<%= f.text_field :department %>
+</p>
+<p>
+	<%= f.label :Company %><br>
+	<%= f.text_field :company %>
+</p>
+<p>
+	<%= f.submit %>
+</p>
+
+<% end %>
