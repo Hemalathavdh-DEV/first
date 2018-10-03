@@ -1,0 +1,21 @@
+<h1>Listing all todos</h1>
+<p>
+	<%= link_to "Create new", new_firstapp_path %>
+</p>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Department</th>
+		<th>Company</th>
+	</tr>
+
+	<% @firstappsmany.each do |list| %>
+	<tr>
+		<td><%= list.name %></td>
+		<td><%= list.department %></td>
+		<td><%= list.company %></td>
+		<td><%= link_to "Edit", edit_firstapp_path(list) %></td>
+		<td><%= link_to "Show", firstapp_path(list) %></td>
+	</tr>
+	<% end %>
+</table>

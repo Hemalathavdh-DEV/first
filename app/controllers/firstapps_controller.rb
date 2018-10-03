@@ -30,6 +30,10 @@ class FirstappsController < ApplicationController
 			render 'edit'
 		end
 	end
+	def index
+		@firstappsmany = Firstapp.all
+
+	end
 
 	private
 		def firstapp_params
