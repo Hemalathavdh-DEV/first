@@ -13,9 +13,23 @@ class FirstappsController < ApplicationController
 			render 'new'
 		end
 	end
-		def show
-			@firstapp = Firstapp.find(params[:id])
+	def show
+		@firstapp = Firstapp.find(params[:id])
+	end
+
+	def edit
+		@firstapp = Firstapp.find(params[:id])
+	end
+
+	def update
+		@firstapp = Firstapp.find(params[:id])
+		if @firstapp.update(firstapp_params)
+			flash[:notice] = "Your post is updated successfully"
+			redirect_to firstapp_path(@firstapp)
+		else
+			render 'edit'
 		end
+	end
 
 	private
 		def firstapp_params
