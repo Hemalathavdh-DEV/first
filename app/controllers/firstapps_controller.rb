@@ -1,5 +1,5 @@
 class FirstappsController < ApplicationController
-
+	before_action :set_find, only: [:edit, :update, :show, :destroy]
 	def new
 		@firstapp= Firstapp.new
 	end
@@ -14,16 +14,15 @@ class FirstappsController < ApplicationController
 		end
 	end
 	def show
-		@firstapp = Firstapp.find(params[:id])
+		
 	end
 
 	def edit
-		@firstapp = Firstapp.find(params[:id])
+		
 	end
 
 	def update
-		@firstapp = Firstapp.find(params[:id])
-		if @firstapp.update(firstapp_params)
+			if @firstapp.update(firstapp_params)
 			flash[:notice] = "Your post is updated successfully"
 			redirect_to firstapp_path(@firstapp)
 		else
@@ -36,13 +35,15 @@ class FirstappsController < ApplicationController
 	end
 
 	def destroy
-		@firstapp = Firstapp.find(params[:id])
 		@firstapp.destroy
 		flash[:notice] = "Data was deleted successfully"
-		redirect_to firstapps_path
+		redirect_to firstapps_path 
 	end
 
 	private
+		def set_find
+			@firstapp = Firstapp.find(params[:id])
+		end
 		def firstapp_params
 			params.require(:firstapp).permit(:name, :department, :company)
 		end
